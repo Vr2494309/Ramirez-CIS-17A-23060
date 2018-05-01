@@ -1,0 +1,185 @@
+// Angel Thomas
+// Victor Ramirez
+//April 2 2018
+//Project 1
+//Ice cream shop Menu
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <iomanip>
+#include <fstream>
+using namespace std;
+double subtotal;
+void totalP(double);
+void totaltoppings();
+int scoopchoice;
+int toppingselect={1.00};
+string toppingchoice;
+int scoops[3] = { 1, 2, 3 };    // Array for number of scoops
+double scoopprice[3] = { 1.99, 2.99, 3.99 };    //Scoop price
+string flavors[3] = { "Vanilla", "Strawberry", "Chocolate" };
+string scoopsize[3] = { "Single", "Double", "Triple" };
+string toppings[3] = { "Chocolate Chips", "Almonds", "Fruit" };
+string additionaltopping;
+string basechoice;
+int main()
+{
+        //Initialize and Declaring variables
+	int flavorchoice;
+	float coneprice = 3.99;
+	float cupprice = 4.99;
+        
+        //Set precision to 2 decimal places
+        cout<<fixed<<showpoint<<setprecision(2);
+	cout << "\t\t\t\t*********************************************\t"<<endl;
+        cout <<"\t\t\t\t*    Welcome to Coldies Ice Cream Parlor     *"  <<endl;
+        cout <<"\t\t\t\t**********************************************\t"<<endl;
+	cout <<endl<< "Would you like a Cup or a Cone?" << endl;
+        cout<<"(Customer): ";
+        
+            cin >> basechoice;
+            
+        //if, else-if else statements for user to decide whether they want 
+           //cone or cup
+	if (basechoice == "Cup" || "cup")
+	{
+		cout << "price is " << cupprice << endl;
+	}
+	else if (basechoice == "Cone" || "cone")
+	{
+		cout << "Your base price is " << coneprice << endl;
+	}
+	else
+	{
+		cout << "That is not an option" << endl;
+	}
+            
+        cout<<endl;
+        cout<<"---------------------------------------------------------------"<<endl;    
+	cout << "Please select from one of our flavors by pressing 1, 2, or 3"
+                << endl <<"(1) " <<flavors[0] << endl <<"(2) " << flavors[1] 
+                << endl <<"(3) " << flavors[2] << endl;
+	cin >> flavorchoice;
+        
+        //Switch statements to ask user to choose their flavor
+	switch (flavorchoice)
+	{
+	case 1:
+	{
+		flavorchoice == 1;
+		cout << "you chose Vanilla" << endl;
+		break;
+	}
+	case 2:
+	{flavorchoice == 2;
+	cout << "You chose Strawberry" << endl;
+	break;
+	}
+	case 3:
+	{flavorchoice == 3;
+	cout << "You chose chocolate" << endl;
+	break;
+	}
+	default:
+	{
+		cout << "Thats not an option" << endl;
+		cin >> flavorchoice;
+	}
+        
+	}
+        
+        cout<<endl;
+        cout<<"---------------------------------------------------------------"<<endl; 
+	cout << "How many scoops would you like" << endl;
+	cout << scoops[0] << "\t" << scoopprice[0] << endl << scoops[1] << "\t" << scoopprice[1] << endl << scoops[2] << "\t" << scoopprice[2] << endl;
+	cin >> scoopchoice;
+        
+        //Switch statements too determine user's scoop choice
+	switch (scoopchoice)
+	{
+	case 1:
+	{
+		subtotal = 1.99;
+		cout << "Your scoop price is " << subtotal << endl;
+		break;
+	}
+	case 2:
+	{
+		subtotal = 2.99;
+		cout << "Your scoop price is " << subtotal << endl;
+		break;
+	}
+	case 3:
+	{
+		subtotal = 3.99;
+		cout << "Your scoop price is " << subtotal << endl;
+	}
+	default:
+	{
+		cout << "That is not one of the choices" << endl;
+		cin >> scoopchoice;
+	}
+	}
+        //display users topping choice
+        cout<<endl;
+        cout<<"---------------------------------------------------------------"<<endl; 
+	cout << "What toppings would you like (Please press 1 2 or 3" << endl;
+	cout <<"(1) " << toppings[0] << endl <<"(2) " << toppings[1] 
+                << endl <<"(3) " << toppings[2] << endl;
+	cin >> toppingselect;
+        
+        //Function for user to choose their toppings
+	void totaltoppings();
+	{
+		switch (toppingselect)
+		{
+		case 1:
+		{
+			toppingchoice = toppings[0];
+			cout << "Your topping is " << toppingchoice << endl;
+			break;
+		}
+		case 2:
+		{
+			toppingchoice = toppings[1];
+			cout << " Your choice of topping is: " << toppingchoice << endl;
+			break;
+		}
+		case 3:
+		{
+			toppingchoice = toppings[2];
+			cout << "Your choice of topping is: " << toppingchoice << endl;
+			break;
+		}
+		default:
+		{
+                    
+			cout << "Thats not one of the choice please input 1 2 or 3)" << endl;
+			cin >> toppingselect;
+		
+		}
+		}
+
+
+	}
+	
+        //Function to determine ice cream total by adding toppings, cups or cone
+	void total(double);
+	{
+		double total;
+		total=toppingselect+cupprice+coneprice+subtotal;
+        cout<<endl;
+        cout<<"---------------------------------------------------------------"<<endl;
+        cout<<"\nYour total is: "<<total<<endl;
+        
+        //outputting ice cream total into a text file 
+        ofstream myfile;
+        myfile.open ("Ice Cream Total.txt");
+        myfile <<"Your total is: "<< total;
+        myfile.close();
+        
+        
+	}
+	
+
+}
